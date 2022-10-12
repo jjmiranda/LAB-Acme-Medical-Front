@@ -6,7 +6,7 @@ import PolarisLogo from "../assets/polaris-logo.png";
 
 const socket = io(process.env.REACT_APP_WS_SERVER as string);
 const host = process.env.REACT_APP_DEEPLINK_HOST as string;
-const backendShareEndpoint = process.env.REACT_APP_BACKEND_SHARE_ENDPOINT as string;
+const backendShareEndpoint = process.env.REACT_APP_BACKEND_ISSUER_SHARE_ENDPOINT as string;
 const backendDownloadEndpoint = process.env.REACT_APP_BACKEND_DOWNLOAD_ENDPOINT as string;
 const clientId = process.env.REACT_APP_CLIENT_ID as string;
 

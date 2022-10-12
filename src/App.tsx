@@ -1,25 +1,20 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { Navigate, Route, Routes } from 'react-router-dom';
+import TicSaludClinicHistoryPage from './pages/tic-salud-clinic-history';
+import TicSaludAccessHistoryPage from './pages/tic-salud-access-history';
+import PolarisPage from './pages/polaris';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      <Route path="/" element={ <Navigate to="/polaris" /> }/>
+      <Route path="polaris" element={<PolarisPage />}/>
+      <Route path="tic-salud">
+        <Route index element={<TicSaludClinicHistoryPage />}/>
+        <Route path="historial" element={<TicSaludAccessHistoryPage />}/>
+      </Route>
+    </Routes>
   );
 }
 

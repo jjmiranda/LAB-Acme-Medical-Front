@@ -53,7 +53,7 @@ const PolarisPage = () => {
             <div className={classes.columnRigth}>
                 <h5>Hi, Doe Joe</h5>
                 <h1>Lorem ipsum dolor sit amet</h1>
-                <div>
+                <div className={classes.content}>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in neque eget neque tempus blandit eget et odio. 
                     In posuere dignissim varius. Etiam euismod ipsum ac diam faucibus vulputate.
                 </div>
@@ -62,7 +62,7 @@ const PolarisPage = () => {
                         step === 2 &&
                         <React.Fragment>
                             <h3>¡Felicidades, ya puedes descargar tu credencial!</h3>
-                            <span style={{fontSize: '3rem', color: '#2abb71'}}><i className="fa fa-check-circle" aria-hidden="true"></i></span>
+                            <span style={{fontSize: '3rem', color: '#21C0AC'}}><i className="fa fa-check-circle" aria-hidden="true"></i></span>
                         </React.Fragment>
                      }
                     <br/>
@@ -79,7 +79,7 @@ const useStyles = createUseStyles({
         flexDirection: 'row',
         height: '100%',
         justifyContent: 'center',
-        // alignItems: 'center'
+        color: '#1A215D'
     },
     logo: {
         width: '250px',
@@ -93,11 +93,15 @@ const useStyles = createUseStyles({
         padding: '2rem',
         flex: 2
     },
+    content: {
+        color: '#767676'
+    },
     qr: {
         display: 'flex',
         marginTop: '3rem',
         alignItems: 'center',
-        flexDirection: 'column'
+        flexDirection: 'column',
+        color: '#767676'
     }
 });
 

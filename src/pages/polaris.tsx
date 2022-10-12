@@ -51,22 +51,25 @@ const PolarisPage = () => {
                 <img className={classes.logo} src={PolarisLogo}/>
             </div>
             <div className={classes.columnRigth}>
-                <h5>Hi, Doe Joe</h5>
-                <h1>Lorem ipsum dolor sit amet</h1>
+                <h5>Hi, John Doe</h5>
+                <h1>Get your doctor credential</h1>
                 <div className={classes.content}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in neque eget neque tempus blandit eget et odio. 
-                    In posuere dignissim varius. Etiam euismod ipsum ac diam faucibus vulputate.
+                    Dr Doe, we value your work at Polaris. To be able to access external systems, you will sometimes be requested to authenticate as a doctor.
+                    <br/>
+                    {
+                        step === 1 ?
+                        <h3>Please scan the QR code below to share your digital identity with us, so that we can issue your verifiable credential.</h3>
+                        :
+                        <h3>Thank you, your verifiable credential is now ready! Please scan the QR code below to add it to your wallet, and you will be all set up.</h3>
+                    }
                 </div>
                 <div className={classes.qr}>
                     {
                         step === 2 &&
-                        <React.Fragment>
-                            <h3>¡Felicidades, ya puedes descargar tu credencial!</h3>
-                            <span style={{fontSize: '3rem', color: '#21C0AC'}}><i className="fa fa-check-circle" aria-hidden="true"></i></span>
-                        </React.Fragment>
+                        <span style={{fontSize: '3rem', color: '#21C0AC'}}><i className="fa fa-check-circle" aria-hidden="true"></i></span>
                      }
                     <br/>
-                    <QRCode value={qrValue}/>
+                    <QRCode value={qrValue} fgColor={step === 1 ? '#000' : '#21C0AC'}/>
                 </div>
             </div>
         </div>

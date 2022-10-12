@@ -33,9 +33,11 @@ const TicSaludClinicHistoryPage = () => {
 
         socket.on('shared-credential-client', (args) => {
             const credential = args[0];
-            const names = credential.credentialSubject?.name;
-            setCredentialState(names);
-            setStep(2);
+            if (credential) {
+                const names = credential.credentialSubject?.name;
+                setCredentialState(names);
+                setStep(2);
+            } else setStep(3);
         });
 
         return () => {
@@ -52,20 +54,21 @@ const TicSaludClinicHistoryPage = () => {
             </div>
             <div className={classes.columnRigth}>
             <h5>Welcome {credentialState}</h5>
-            <h1>Pepe's Clinic History</h1>
+            <h1>Peter Smith's medical history</h1>
             {
-                step === 1 ?
+                step === 1 &&
                 <div>
                     <div className={classes.content}>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in neque eget neque tempus blandit eget et odio. 
-                        In posuere dignissim varius. Etiam euismod ipsum ac diam faucibus vulputate.
+                        You have requested access to patient Peter Smith's medical history. Please authenticate by scanning the QR below with your identity wallet.
                     </div>
                     <div className={classes.qr}>
                         <br/>
                         <QRCode value={qrValue}/>
                     </div>
                 </div>
-                :
+            }
+            {
+                step === 2 &&
                 <div className={classes.historyContainer}>
                     <div className={classes.columnLeft}>
                         <img className={classes.profileImg} src={PepeProfile}/>
@@ -83,6 +86,14 @@ const TicSaludClinicHistoryPage = () => {
                             <div className={classes.gridItemField}>Campo 5:</div>
                             <div className={classes.gridItemValue}>Valor 5</div>
                         </div>
+                    </div>
+                </div>
+            }
+            {
+                step === 3 &&
+                <div>
+                    <div className={classes.contentError}>
+                        You not have access to patient Peter Smith's medical history.
                     </div>
                 </div>
             }
@@ -113,6 +124,9 @@ const useStyles = createUseStyles({
     },
     content: {
         color: '#767676'
+    },
+    contentError: {
+        color: '#e85353'
     },
     qr: {
         display: 'flex',

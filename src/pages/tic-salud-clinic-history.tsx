@@ -34,7 +34,7 @@ const TicSaludClinicHistoryPage = () => {
         socket.on('shared-credential-client', (args) => {
             const credential = args[0];
             const names = credential.credentialSubject?.name;
-            setCredentialState(names.givenName + ' ' + names.familyName);
+            setCredentialState(names);
             setStep(2);
         });
 

@@ -21,7 +21,7 @@ const PolarisPage = () => {
             url.searchParams.append('redirect_uri', backendShareEndpoint);
             url.searchParams.append('title', 'Polaris');
             url.searchParams.append('description', 'Polaris - medical certificate');
-            url.searchParams.append('claims', 'name,address,birthDate,email');
+            // url.searchParams.append('claims', 'name,address,birthDate,email');
             url.searchParams.append('client_id', clientId);
             url.searchParams.append('state', socket.id);
             const newQRValue = url.toString();

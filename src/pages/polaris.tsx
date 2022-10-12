@@ -10,6 +10,7 @@ const PolarisPage = () => {
                 <img className={classes.logo} src={PolarisLogo}/>
             </div>
             <div className={classes.columnRigth}>
+                <h5>Hi, Doe Joe</h5>
                 <h1>Lorem ipsum dolor sit amet</h1>
                 <div>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in neque eget neque tempus blandit eget et odio. 

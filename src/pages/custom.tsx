@@ -81,19 +81,25 @@ const CustomPage = () => {
                         <span>
                             <h3>Recibimos tu identidad Digital {subject_did}, por favor llena los siguientes campos para emitir tu credencial.</h3>
                             <form onSubmit={event =>{ 
+                                                        const bloque = document.getElementById('mensaje') as HTMLInputElement | null;
+                                                        if (bloque != null) {
+                                                            bloque.style.display = 'block';
+                                                        }
                                                         fetch(backendShareEndpoint + '/custom-step2?claims='+claims_form+'&sub='+subject_did+'&state='+socket.id);
                                                         //fetch('http://localhost:8001/api/issuer/custom-step2?claims='+claims_form+'&sub='+subject_did); 
                                                         event.preventDefault();
                                                     }}>
                                 <label>
                                     Claims:
-                                    <textarea name="claims" id="claims" rows={5} cols={50} value={claims_form} onChange={(event) => {
+                                    <textarea name="claims" id="claims" rows={5} cols={50} value={claims_form} onChange={ (event) => {
                                         setClaims(event.target.value);
                                     } }/>
                                 </label>
                                 <input type="submit" value="Submit" />
                             </form>
-
+                            <div id="mensaje" style={{display:'none'}}>
+                                ...Generando credencial verificable, espere unos segundos...
+                            </div>
                         </span>
                     }
                     {
@@ -102,7 +108,7 @@ const CustomPage = () => {
                     }
                     {
                         step === 4 &&
-                        <span><br/>LISTO, VC DESCARGADO Y EN TU BILLETERA...</span>
+                        <span><br/>Credencial lista y descargada. Acepte la descarga desde su billetera y refresque la vista de credenciales jalando hacia abajo...</span>
                     }
                 </div>
                 <div className={classes.qr}>

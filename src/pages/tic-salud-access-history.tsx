@@ -4,6 +4,7 @@ import TicSaludLogo from "../assets/tic-logo.png";
 import io from "socket.io-client";
 
 const socket = io(process.env.REACT_APP_WS_SERVER as string);
+const access_history = process.env.REACT_APP_BACKEND_ACCESS_HISTORY_ENDPOINT as string;
 
 type HistoryEntry = [string, string]
 
@@ -12,7 +13,7 @@ const TicSaludAccessHistoryPage = () => {
     const [historyEntries, setHistoryEntries] = useState<HistoryEntry[]>([]);
 
     React.useEffect(() => {
-        fetch('https://acme-ticket-api.demo.kaytrust.id/api/verifier/access-history')
+        fetch(access_history)
             .then((res) => res.json())
             .then(setHistoryEntries)
             .catch((err) => console.log(err));
@@ -20,7 +21,7 @@ const TicSaludAccessHistoryPage = () => {
         console.log(process.env.REACT_APP_WS_SERVER);
 
         socket.on('access-history-client', () => {
-            fetch('https://acme-ticket-api.demo.kaytrust.id/api/verifier/access-history')
+            fetch(access_history)
                 .then((res) => res.json())
                 .then(setHistoryEntries)
                 .catch((err) => console.log(err));
